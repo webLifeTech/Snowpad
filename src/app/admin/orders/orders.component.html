@@ -1,0 +1,40 @@
+<div class="custom_box">
+    <div class="text-right mb-3 sticky-top">
+        <button class="btn btn-warning text-white common-btn" routerLink="/admin/product/add">
+            Add New Product
+        </button>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#No</th>
+                <th>Order No</th>
+                <th>Name</th>
+                <th>Order Status</th>
+                <th class="text-center">Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of AllOrderList;let inx = index">
+                <td>{{inx+1}}</td>
+                <td>{{item.orderNo}}</td>
+                <td>{{item.firstName}} {{item.lastName}}</td>
+                <td>
+                    <select class="form-select" [(ngModel)]="item.ord_status"
+                        (ngModelChange)="updateProductStatus(item)" aria-label="Default select example">
+                        <option value="In Review">In Review</option>
+                        <option value="On The Way">On The Way</option>
+                        <option value="Delivered">Delivered</option>
+                    </select>
+                </td>
+                <td class="text-center">
+                    <button type="button" class="btn btn-success" (click)="editProduct(item)">
+                        Edit
+                    </button>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>

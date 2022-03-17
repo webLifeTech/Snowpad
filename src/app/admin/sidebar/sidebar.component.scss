@@ -1,0 +1,36 @@
+.active{
+    background: linear-gradient(60deg,#ab47bc,#7b1fa2);
+    box-shadow: 0 5px 34px 0 rgba(0, 0, 0, 0.15), 0 13px 5px -11px rgba(156,39,176,.6);
+    color: white;
+    a{
+        color: white;
+    }
+}
+.active:hover{
+    background: linear-gradient(60deg,#ab47bc,#7b1fa2)!important;
+    box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.15), 0 13px 24px -11px rgba(156,39,176,.6);
+    color: white!important;
+}
+.sidebar {
+    background: #fff;
+    box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
+    z-index: 10;
+}
+.brand{
+    padding: 6px 0;
+}
+li{
+    list-style: none;
+}
+.sidemanu:hover{
+    background: #eaeef2;
+    transition: all .5s ease-out;
+}
+.sidemanu:focus{
+    outline: none;
+}
+.sidemanu{
+    cursor: pointer;
+    transition: all .5s ease-out;
+    max-width: 100%;
+}

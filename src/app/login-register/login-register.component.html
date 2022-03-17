@@ -1,0 +1,97 @@
+<app-header></app-header>
+<!-- Sign In -->
+<section class="main-section" *ngIf="isLoginForm">
+    <div class="custom_box p-md-4" style="max-width: 500px;margin: auto;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mb-3">
+                    <label for="mobileno" class="form-label">Mobile Number</label>
+                    <input [(ngModel)]="loginForm.mobileNo" type="number" class="form-control" id="mobileno" />
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input [(ngModel)]="loginForm.password" type="password" class="form-control" id="password">
+                </div>
+            </div>
+            <div class="col-md-12 text-center">
+                <button (click)="signIn()" type="button" class="btn btn-success shadow mx-2">Sign In</button>
+                <div class="mt-4">
+                    <a (click)="changeForm()">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Sign Up -->
+<section class="main-section" *ngIf="!isLoginForm">
+    <form #registerForm="ngForm" (ngSubmit)="signUp(registerForm.form)">
+        <div class="custom_box p-md-4" style="max-width: 500px;margin: auto;">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mb-3">
+                        <label for="firstName" class="form-label">First Name</label>
+                        <input #firstName="ngModel" [(ngModel)]="resisterForm.firstName" name="firstName" type="text"
+                            class="form-control" id="firstName" required />
+                        <span *ngIf="!firstName?.valid && (firstName?.dirty || firstName?.touched)"
+                            class="text-danger">First Name is requied !</span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="mb-3">
+                        <label for="lastName" class="form-label">Last Name</label>
+                        <input #lastName="ngModel" [(ngModel)]="resisterForm.lastName" name="lastName" type="text"
+                            class="form-control" id="lastName" required />
+                        <span *ngIf="!lastName?.valid && (lastName?.dirty || lastName?.touched)"
+                            class="text-danger">Last Name is requied !</span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input #email="ngModel" [(ngModel)]="resisterForm.email" type="email" name="email123"
+                            class="form-control" id="email" required />
+                        <span *ngIf="!email?.valid && (email?.dirty || email?.touched)" class="text-danger">email is
+                            requied !</span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="mb-3">
+                        <label for="mobileNo" class="form-label">Mobile No</label>
+                        <input #mobileNo="ngModel" [(ngModel)]="resisterForm.mobileNo" name="mobileNo" type="number"
+                            class="form-control" id="mobileNo" required />
+                        <span *ngIf="!mobileNo?.valid && (mobileNo?.dirty || mobileNo?.touched)"
+                            class="text-danger">mobileNo is requied !</span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="mb-3">
+                        <label for="whatsNo" class="form-label">whatsNo</label>
+                        <input #whatsNo="ngModel" [(ngModel)]="resisterForm.whatsNo" name="whatsNo" type="number"
+                            class="form-control" id="whatsNo" required />
+                        <span *ngIf="!whatsNo?.valid && (whatsNo?.dirty || whatsNo?.touched)"
+                            class="text-danger">whatsNo is requied !</span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="mb-3">
+                        <label for="password" class="form-label">password</label>
+                        <input #password="ngModel" [(ngModel)]="resisterForm.password" name="password" type="password"
+                            class="form-control" id="password" required />
+                        <span *ngIf="!password?.valid && (password?.dirty || password?.touched)"
+                            class="text-danger">password is requied !</span>
+                    </div>
+                </div>
+                <div class="col-md-12 text-center">
+                    <button type="submit" class="btn btn-success shadow mx-2">Resister</button>
+                    <div class="mt-4">
+                        <a (click)="changeForm()">Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>

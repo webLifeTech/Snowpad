@@ -1,0 +1,46 @@
+<app-header></app-header>
+<section class="main-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <img src="assets\img\portfolio\portfolio-4.jpg" class="image" width="530px" height="530px" alt="">
+                <div class="mt-5">
+                    <span>
+                        <img src="assets\img\portfolio\portfolio-4.jpg" class="image" width="100px" height="100px"
+                            alt="">
+                        <img src="assets\img\portfolio\portfolio-4.jpg" class="image" width="100px" height="100px"
+                            alt="">
+                        <img src="assets\img\portfolio\portfolio-4.jpg" class="image" width="100px" height="100px"
+                            alt="">
+                        <img src="assets\img\portfolio\portfolio-4.jpg" width="100px" height="100px" alt="">
+                    </span>
+                </div>
+            </div>
+            <div class="col-6">
+                <div>
+                    <h1>Box of 40 Sanitary Pads (Without Disposal Bags)</h1>
+                    <p>AZAH</p>
+                    <span>
+                        <p>
+                            <span class="price-not"><b>Rs. 519.00</b></span><b> Rs. 209.00 Sale</b>
+                        </p>
+                    </span>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <label>Size</label><br>
+                            <input type="text" name="size" [(ngModel)]="productDetails.size">
+                        </div>
+                        <div class="col-6">
+                            <label>Quantity</label><br>
+                            <input type="number" name="quantity" [(ngModel)]="productDetails.qty">
+                        </div>
+                    </div>
+                    <div class="mb-5">
+                        <button class="btn btn-light w-100 mb-2 addtocart">ADD TO CART</button><br>
+                        <button class="btn btn-primary w-100" (click)="buyItNow(productDetails.id)">BUY IT NOW</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
