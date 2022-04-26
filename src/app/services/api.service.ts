@@ -5,8 +5,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ApiService {
-  serverURl: string = 'http://192.168.0.170:8001/api/';
-  imageURl: string = 'http://192.168.0.170:8001/image/product/';
+  serverURl: string = 'http://snowpad.in/api/';
+  imageURl: string = 'http://snowpad.in/image/product/';
   constructor(
     private http: HttpClient
   ) {

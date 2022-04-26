@@ -11,6 +11,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { FormsModule } from '@angular/forms';
 import { CheckoutsComponent } from './checkouts/checkouts.component';
 import { LoginRegisterComponent } from './login-register/login-register.component';
+import { CardComponent } from './card/card.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { LoginRegisterComponent } from './login-register/login-register.componen
     HomeComponent,
     ProductDetailsComponent,
     CheckoutsComponent,
-    LoginRegisterComponent
+    LoginRegisterComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
