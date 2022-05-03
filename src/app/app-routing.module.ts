@@ -14,8 +14,8 @@ const routes: Routes = [
     component: ProductDetailsComponent
   },
   {
-    path:'card',
-    component:CardComponent
+    path: 'card',
+    component: CardComponent
   },
   {
     path: 'checkout/:key/:proId',
@@ -34,7 +34,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
