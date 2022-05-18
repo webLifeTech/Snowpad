@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLinkActive } from '@angular/router';
+import { ActivatedRoute, Router, RouterLinkActive } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -10,18 +10,19 @@ import { ApiService } from 'src/app/services/api.service';
 export class AddEditProductComponent implements OnInit {
 
   productForm: any = {
-    name: 'Test',
-    selling_price: 100,
-    market_price: 120,
-    min_qty: 5,
-    size: 'XXl',
-    description: 'Test 1234',
+    name: '',
+    selling_price: '',
+    market_price: '',
+    min_qty: '',
+    size: '',
+    description: '',
     photo: []
   }
 
   isAction: boolean = false;
   constructor(
     public route: ActivatedRoute,
+    public router: Router,
     public api: ApiService
   ) {
     this.route.params.subscribe((params: any) => {
@@ -49,7 +50,6 @@ export class AddEditProductComponent implements OnInit {
             type: 'old'
           })
         }
-        console.log(":this.productForm.photo>>", this.productForm);
         // this.productForm.photo = JSON.parse(this.productForm.photo)
       }
     })
@@ -63,6 +63,7 @@ export class AddEditProductComponent implements OnInit {
 
     console.log("this.isAction>>>", this.isAction);
 
+    // add product
     if (!this.isAction) {
       this.api.post('add-product', this.productForm).then((res: any) => {
         console.log("res>>>", res);
@@ -74,6 +75,7 @@ export class AddEditProductComponent implements OnInit {
       })
     }
 
+    // update product
     if (this.isAction) {
       this.api.post('update-product', this.productForm).then((res: any) => {
         if (res.status) {

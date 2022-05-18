@@ -24,4 +24,24 @@ export class ApiService {
       })
     })
   }
+
+  // Images Preview return data
+  lightboxImage(product: any, key: any) {
+    console.log("product>>>", product);
+    console.log("key>>>", key);
+    let imgArray = [];
+    if (product && product[key] && product[key].length) {
+      for (let i in product[key]) {
+        if (product[key][i]['url']) {
+          product[key][i]['src'] = this.imageURl + product[key][i]['url'];
+          imgArray.push(product[key][i]);
+        } else {
+          let src = '';
+          src = this.imageURl + product[key][i];
+          imgArray.push({ src: src });
+        }
+      }
+    }
+    return imgArray;
+  }
 }

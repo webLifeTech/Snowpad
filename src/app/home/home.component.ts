@@ -34,15 +34,15 @@ export class HomeComponent implements OnInit {
   }
 
   viewProductDetail(item: any) {
-    const id = item.id
-    delete item.photo
-    delete item.id
-    this.router.navigate(['/product-details/' + id, item])
+    // const id = item.id
+    // delete item.photo
+    // delete item.id
+    this.router.navigate(['/product-details/' + item.id])
   }
 
   loadScript() {
     console.log("loadScript???");
-    
+
     let body = <HTMLDivElement>document.body;
     let script = document.createElement('script');
     script.innerHTML = '';
@@ -50,6 +50,6 @@ export class HomeComponent implements OnInit {
     script.async = true;
     script.defer = true;
     body.appendChild(script);
-}
+  }
 
 }

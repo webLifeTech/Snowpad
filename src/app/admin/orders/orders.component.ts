@@ -8,7 +8,8 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./orders.component.scss']
 })
 export class OrdersComponent implements OnInit {
-  AllOrderList: any = []
+  AllOrderList: any = [];
+  isSpinner: boolean = false;
   constructor(
     public api: ApiService,
     public router: Router,

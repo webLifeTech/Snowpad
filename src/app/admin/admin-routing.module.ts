@@ -19,8 +19,13 @@ const routes: Routes = [
       {
         path: 'orders', component: OrdersComponent
       },
-    ]
-  }
+      {
+        path: '',
+        redirectTo: 'product-list',
+        pathMatch: 'full'
+      },
+    ],
+  },
 ];
 
 @NgModule({

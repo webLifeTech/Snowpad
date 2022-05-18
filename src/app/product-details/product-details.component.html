@@ -2,8 +2,8 @@
 <section class="main-section">
     <div class="container">
         <div class="row">
-            <div class="col-6">
-                <img src="assets\img\portfolio\portfolio-4.jpg" class="image" width="530px" height="530px" alt="">
+            <div class="col-12 col-md-6">
+                <!-- <img src="assets\img\portfolio\portfolio-4.jpg" class="image" width="530px" height="530px" alt="">
                 <div class="mt-5">
                     <span>
                         <img src="assets\img\portfolio\portfolio-4.jpg" class="image" width="100px" height="100px"
@@ -14,30 +14,85 @@
                             alt="">
                         <img src="assets\img\portfolio\portfolio-4.jpg" width="100px" height="100px" alt="">
                     </span>
+                </div> -->
+                <ngx-slick-carousel class="carousel" (afterChange)="afterChange($event)" #slickModal="slick-carousel"
+                    [config]="imagesSlider">
+                    <ng-container *ngIf="productDetails.photo && productDetails.photo.length">
+                        <div *ngFor="let item of productDetails.photo; let i = index" class="slide cursor"
+                            (click)="openLightbox(productDetails,'photo',i)">
+                            <img [src]="api.imageURl + item" class="rounded max-height" [alt]="item" width="100%">
+                            <!-- <a class="popup-img venobox" (click)="openLightbox(productDetails,'photo',i)">
+                                <i class="bi bi-fullscreen"></i>
+                            </a> -->
+                        </div>
+                    </ng-container>
+                </ngx-slick-carousel>
+                <div class="mt-2">
+                    <ngx-slick-carousel class="carousel thumbs" #slickModal="slick-carousel"
+                        [config]="thumbnailsSlider">
+                        <ng-container *ngIf="productDetails.photo && productDetails.photo.length">
+                            <div *ngFor="let item of productDetails.photo; let i = index" class="slide cursor">
+                                <img [src]="api.imageURl + item" [ngClass]="{'thumb_active': currentSlide === i}"
+                                    class="img-thumbnail thumb-height" [alt]="item" width="100%">
+                            </div>
+                        </ng-container>
+                    </ngx-slick-carousel>
                 </div>
             </div>
-            <div class="col-6">
-                <div>
-                    <h1>Box of 40 Sanitary Pads (Without Disposal Bags)</h1>
-                    <p>AZAH</p>
+            <div class="col-12 col-md-6">
+                <div class="mt-3">
+                    <h1 class="product_title">{{productDetails.name}}</h1>
+                    <p>SNOWPAD</p>
                     <span>
-                        <p>
-                            <span class="price-not"><b>Rs. 519.00</b></span><b> Rs. 209.00 Sale</b>
-                        </p>
+                        <!-- <span class="price-not"><b>Rs. 519.00</b></span><b> Rs. 209.00 Sale</b> -->
+                        <span class="priceLabel">
+                            Rs. {{productDetails.selling_price | currency : 'INR'}} Sale
+                        </span>
+                        <span class="">
+                            <dd>{{productDetails.market_price | currency : 'INR'}}</dd>
+                        </span>
                     </span>
-                    <div class="row mb-3">
-                        <div class="col-6">
-                            <label>Size</label><br>
-                            <input type="text" name="size" [(ngModel)]="productDetails.size">
-                        </div>
-                        <div class="col-6">
-                            <label>Quantity</label><br>
-                            <input type="number" name="quantity" [(ngModel)]="productDetails.qty">
-                        </div>
+                    <div class="mb-3">
+                        <h4 class="pro-head-htl">Size: <a class="pro-htl"><b>{{productDetails.size}}</b></a></h4>
+                        <h5 class="pro-head-htl">Country of Origin: <a class="pro-htl"><b>India</b></a></h5>
                     </div>
-                    <div class="mb-5">
+                    <!-- <div class="mb-5">
                         <button class="btn btn-light w-100 mb-2 addtocart">ADD TO CART</button><br>
                         <button class="btn btn-primary w-100" (click)="buyItNow(productDetails.id)">BUY IT NOW</button>
+                    </div> -->
+
+                    <div class="mt-5">
+                        <div class="input-group quantityGroup" style="max-width: 200px;">
+                            <span class="input-group-prepend">
+                                <button type="button" class="UDbtn" (click)="quantity(0)">
+                                    <span class="bi bi-dash-lg"></span>
+                                </button>
+                            </span>
+                            <input type="number" name="quantity" class="form-control quantityInput no-border-radius"
+                                [(ngModel)]="formObj.quantity" name="quantity" (ngModelChange)="updateQuantity()"
+                                (keypress)="keyPressOnlyNumbers($event)">
+                            <span class="input-group-append">
+                                <button type="button" class="UDbtn" (click)="quantity(1)">
+                                    <span class="bi bi-plus-lg"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-6">
+                            <button (click)="addToCart()" class="btn custom_btn" style="background-color: #ff9f00;"
+                                [disabled]="isDisabled">
+                                <i class="fa fa-shopping-cart"></i>
+                                Add To Cart
+                            </button>
+                        </div>
+                        <div class="col-6">
+                            <button (click)="addToCart()" class="btn custom_btn" style="background-color: #fb641b;"
+                                [disabled]="isDisabled">
+                                <i class="fa fa-shopping-cart"></i>
+                                Buy Now
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

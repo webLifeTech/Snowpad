@@ -10,17 +10,17 @@ import { ApiService } from '../services/api.service';
 export class LoginRegisterComponent implements OnInit {
 
   loginForm: any = {
-    mobileNo: '6353167265',
-    password: '123123123'
+    mobileNo: '',
+    password: ''
   }
 
   resisterForm: any = {
-    firstName: 'Paras',
-    lastName: 'Gogdani',
-    email: 'parasgogdani@gmail.com',
-    mobileNo: '6353167265',
-    whatsNo: '6353167265',
-    password: '123123123'
+    firstName: '',
+    lastName: '',
+    email: '',
+    mobileNo: '',
+    whatsNo: '',
+    password: ''
   }
 
   isLoginForm: boolean = true;
@@ -41,10 +41,10 @@ export class LoginRegisterComponent implements OnInit {
   signIn() {
     this.api.post('login-user', this.loginForm).then((res: any) => {
       console.log(" res['res']>>", res);
-      if(res.status){
+      if (res.status) {
         localStorage.setItem('swowpadUser', JSON.stringify(res['data']));
         this.router.navigate(['/home']);
-      }else{
+      } else {
         console.log("Error>>>>>>>>");
       }
     })
@@ -54,9 +54,9 @@ export class LoginRegisterComponent implements OnInit {
     if (registerForm.valid) {
       this.api.post('add-user', this.resisterForm).then((res: any) => {
         console.log(" res['res']>>", res);
-        if(res.status){
+        if (res.status) {
           this.isLoginForm = true;
-        }else{
+        } else {
           console.log("Error>>>>>>>>");
         }
       })
